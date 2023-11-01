@@ -1,0 +1,7 @@
+.dictionary-icon{
+    color: black;
+}
+.navbar{
+    display: flex;
+justify-content: space-between;
+}

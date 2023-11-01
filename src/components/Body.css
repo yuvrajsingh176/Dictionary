@@ -1,0 +1,40 @@
+.input{
+border: none;
+/* background: transparent; */
+width: 53%;
+outline: none;
+background-color: antiquewhite;
+height: 2.5rem;
+    border-top-left-radius: 10px; /* Adjust the radius as needed */
+    border-bottom-left-radius: 10px; /* Adjust the radius as needed */
+color: black;
+padding-left: 1.5rem;
+}
+/* ,avnhijbf */
+.input-ser{
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+.word-audio{
+   margin-top: 4rem;
+}
+.audio-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.line{
+    height: 1px;
+    width: 40%;
+    background-color: black;
+}
+.part-of-speech-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
