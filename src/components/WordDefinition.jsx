@@ -28,7 +28,6 @@ const WordDefinition = ({ wordData }) => {
         <div className="part-of-speech" key={meaningIndex}>
           <div className="part-of-speech-title">
             <h3>{meaning.partOfSpeech}</h3>
-            <div className="line"></div>
           </div>
           <ul>
             {meaning.definitions.map((definition, definitionIndex) => (
@@ -55,7 +54,7 @@ const WordDefinition = ({ wordData }) => {
 
       <div className="source-urls">
         {wordData.sourceUrls.map((sourceUrl, index) => (
-          <a key={index} href={sourceUrl} target="_blank" rel="noopener noreferrer">
+          <a style={{marginRight:"1rem"}} key={index} href={sourceUrl} target="_blank" rel="noopener noreferrer">
             Source {index + 1}
           </a>
         ))}

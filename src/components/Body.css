@@ -5,8 +5,7 @@ width: 53%;
 outline: none;
 background-color: antiquewhite;
 height: 2.5rem;
-    border-top-left-radius: 10px; /* Adjust the radius as needed */
-    border-bottom-left-radius: 10px; /* Adjust the radius as needed */
+    border-radius: 10px; /* Adjust the radius as needed */
 color: black;
 padding-left: 1.5rem;
 }
@@ -38,3 +37,15 @@ padding-left: 1.5rem;
     justify-content: space-between;
     margin-top: 2rem;
 }
+/* CSS */
+.glowing {
+    animation: glow 1s infinite alternate; /* Apply the glow animation */
+  }
+  
+  @keyframes glow {
+    from {
+        box-shadow: rgb(85, 91, 255) 0px 0px 0px 1px, rgb(31, 193, 27) 0px 0px 0px 2px, rgb(255, 217, 19) 0px 0px 0px 4px, rgb(255, 156, 85) 0px 0px 0px 5px, rgb(255, 85, 85) 0px 0px 0px 5px;    }
+    to {
+        box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;    }
+  }
+  

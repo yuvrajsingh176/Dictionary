@@ -7,43 +7,66 @@ const Body = () => {
   const [wordData, setWordData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+    const [error, setError] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
 
+    const startTyping = () => {
+        setIsTyping(true);
+    }
+    const stopTyping = () => {
+        setIsTyping(false); 
+    }
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery}`
       );
-      if (!response.ok) {
-        throw new Error("Network response was not okay");
+        if (!response.ok) {
+            if (response.status === 404) {
+                setError("Actually the problem was we could not find the word in the dictionary,if this word is added in the dictionary in the future we will show the response 🙅‍♂️🙅🙅‍♀️");          
+            }
+            else if (response.status === 500) {
+                setError("Internal server error!!");          
+                
+            }
+            else {
+                setError("we could not figure out what the error was!!")
+            }
+            setLoading(false);
+            return;
       }
       const jsonData = await response.json();
-      setWordData(jsonData);
+        setWordData(jsonData);
+        setError(null)
     } catch (e) {
+        setError("An error occurred while fetching data");
       console.log("Error fetching data", e);
     }
     setLoading(false);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [searchQuery]);
+
 
   const handleSearch = (e) => {
-    e.preventDefault(); // Prevent the default form submission
+      e.preventDefault(); // Prevent the default form submission
+      setWordData([])
+      setError(null);
     fetchData();
   };
 
   return (
     <div>
       <form onSubmit={handleSearch}>
-        <div className="input-ser">
+        <div className="input-ser" >
           <input
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="input"
+                      className={`input ${isTyping?'glowing':" "}`}
+                      onFocus={startTyping}
+                      onBlur={stopTyping}
           />
           <div className="search-button">
             <button type="submit">
@@ -52,8 +75,9 @@ const Body = () => {
           </div>
         </div>
       </form>
-      {loading && <p>Loading...</p>}
-      {wordData.map((word, index) => (
+          {loading && <p>Loading...</p>}
+          {error && <p style={{marginTop:"4rem"}}> {error}</p>}
+      { wordData.map((word, index) => (
         <WordDefinition key={index} wordData={word} />
       ))}
     </div>

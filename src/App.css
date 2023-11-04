@@ -47,6 +47,13 @@ body{
   margin-right: 8rem;
 
 }
+@media (max-width:724px) {
+  .app{
+    margin-left: 0;
+    margin-right: 0;
+  
+  }
+}
 .word-phonetic{
   display: flex;
   flex-direction: column;
